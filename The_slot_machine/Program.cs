@@ -47,6 +47,7 @@
             }
 
             // 3. Create multi- random numbers.
+            Console.WriteLine("randomNumbers");
 
             Random randomNumbersGenerator = new Random();
 
@@ -61,11 +62,23 @@
 
 
             // 4. Create 2D arrays for random numbers.
+            Console.WriteLine("2D array");
 
 
-
-
-
+            int[,] arr2d = new int[3, 3]{
+                                {1, 2, 3},
+                                {4, 5, 6},
+                                {7, 8, 9}
+                            };
+            Console.WriteLine(arr2d[0, 0]);
+            Console.WriteLine(arr2d[0, 1]);
+            Console.WriteLine(arr2d[0, 2]);
+            Console.WriteLine(arr2d[1, 0]);
+            Console.WriteLine(arr2d[1, 1]);
+            Console.WriteLine(arr2d[1, 2]);
+            Console.WriteLine(arr2d[2, 0]);
+            Console.WriteLine(arr2d[2, 1]);
+            Console.WriteLine(arr2d[2, 2]);
 
 
 
