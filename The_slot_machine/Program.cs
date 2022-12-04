@@ -30,8 +30,9 @@
 
             // 2. Choose option for bidding (player choose amount to play $). 
             // 2.1 Create if statements to see if he wants to play combination of (vertical lines, horizontal lines, only center line, two horizontal lines...)
+            Console.WriteLine("Add your amount of game money in USD $");
+            int playersGameMoney = int.Parse(Console.ReadLine()); // Converting input to int directly, because later it will be used only as int
             
-
 
 
 
