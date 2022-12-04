@@ -26,7 +26,7 @@
             Console.WriteLine("Choose how many lines you will play by typing in number of the menu");
             Console.WriteLine("\n\t1 - Center Line. One turn 1$\n\t2 - All horizontal lines. One turn 3$\n\t3 - All vertical lines. One turn 3$\n\t4 - Diagonals. One turn 2$");
             int playersChoseOptionToPLay = int.Parse(Console.ReadLine()); // Converting input to int directly, because later it will be used only as int
-            if(playersChoseOptionToPLay == 1)
+            if (playersChoseOptionToPLay == 1)
             {
 
             }
@@ -48,8 +48,12 @@
 
             // 3. Create multi- random numbers.
 
+            Random randomNumbersGenerator = new Random();
 
-
+            for (int randomNumbersInArray = 0; randomNumbersInArray < 100; randomNumbersInArray++)
+            {
+                Console.WriteLine(randomNumbersGenerator.Next(10)); //returns random integers(numbers) < 10
+            }
 
 
 
