@@ -19,22 +19,32 @@
 
 
 
-
-
-
-
-
-
-
-
-
             // 2. Choose option for bidding (player choose amount to play $). 
             // 2.1 Create if statements to see if he wants to play combination of (vertical lines, horizontal lines, only center line, two horizontal lines...)
             Console.WriteLine("Add your amount of game money in USD $");
             int playersGameMoney = int.Parse(Console.ReadLine()); // Converting input to int directly, because later it will be used only as int
-            
+            Console.WriteLine("Choose how many lines you will play by typing in number of the menu");
+            Console.WriteLine("\n\t1 - Center Line. One turn 1$\n\t2 - All horizontal lines. One turn 3$\n\t3 - All vertical lines. One turn 3$\n\t4 - Diagonals. One turn 2$");
+            int playersChoseOptionToPLay = int.Parse(Console.ReadLine()); // Converting input to int directly, because later it will be used only as int
+            if(playersChoseOptionToPLay == 1)
+            {
 
+            }
 
+            if (playersChoseOptionToPLay == 2)
+            {
+
+            }
+
+            if (playersChoseOptionToPLay == 3)
+            {
+
+            }
+
+            if (playersChoseOptionToPLay == 4)
+            {
+
+            }
 
             // 3. Create multi- random numbers.
 
