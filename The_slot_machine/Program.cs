@@ -55,13 +55,16 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             int[,] array2Dimmensional = new int[3, 3];  // columns and lines of the grid
 
             
-            for (int rows = 0; rows < 3; rows++) //populating 2D Array
+            for (int rows = 0; rows < 3; rows++) //populating 2D Array. for every row for loop adding three columns and random numbers to it
             {
-                for (int columns = 0; columns < 3; columns++)
+                for (int columns = 0; columns < 3; columns++) 
                 {
-                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 10);
+                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 10); // attributing random numbers to every row and column
                 }
             }
+
+            
+          
 
 
 
