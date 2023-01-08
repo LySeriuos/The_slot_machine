@@ -114,7 +114,25 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
 
             if (playersChoseOptionToPLay == 3)
             {
-                
+                if (firstColumnV && secondColumnV && thirdColumnV)
+                {
+                    Console.WriteLine("You won 3 dollars!!!");
+                    // add money to players balance
+                }
+                else if (firstColumnV && secondColumnV | firstColumnV && thirdColumnV | secondColumnV && thirdColumnV)
+                {
+                    Console.WriteLine("You won 2 dollars !!!");
+                    // add money to players balance
+                }
+                else if (firstColumnV | secondColumnV | thirdColumnV)
+                {
+                    Console.WriteLine("You won 1 dollar!!!");
+                    // add money to players balance
+                }
+                else
+
+                    Console.WriteLine("You lost");
+                // Take out from players balance
 
             }
 
