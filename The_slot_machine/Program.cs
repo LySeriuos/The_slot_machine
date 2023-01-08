@@ -36,7 +36,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             {
                 for (int columns = 0; columns < 3; columns++) 
                 {
-                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 2); // attributing random numbers to every row and column
+                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 1); // attributing random numbers to every row and column
                 }
             }
 
@@ -86,13 +86,9 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
 
             if (playersChoseOptionToPLay == 2)
             {
-                
-
-                
-
-                if (firstLine | secondLine | thirdLine)
+                if (firstLine && secondLine && thirdLine)
                 {
-                    Console.WriteLine("You won 1 dollar!!!");
+                    Console.WriteLine("You won 3 dollars!!!");
                     // add money to players balance
                 }
                 else if (firstLine && secondLine | firstLine && thirdLine | secondLine && thirdLine)
@@ -100,15 +96,14 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                     Console.WriteLine("You won 2 dollars !!!");
                     // add money to players balance
                 }
-                else if (firstLine && secondLine && thirdLine)
+                else if (firstLine | secondLine | thirdLine)
                 {
-                    Console.WriteLine("You won 3 dollars!!!");
+                    Console.WriteLine("You won 1 dollar!!!");
                     // add money to players balance
-                }
-                else
+                }else
+                              
                     Console.WriteLine("You lost");
                 // Take out from players balance
-
             }
 
             if (playersChoseOptionToPLay == 3)
