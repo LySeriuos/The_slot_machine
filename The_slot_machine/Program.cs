@@ -36,7 +36,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             {
                 for (int columns = 0; columns < 3; columns++)
                 {
-                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 1); // attributing random numbers to every row and column
+                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 2); // attributing random numbers to every row and column
                 }
             }
 
@@ -77,6 +77,11 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             bool firstColumnV = fColFLine == fColSLine && fColSLine == fColTLine;
             bool secondColumnV = sColFLine == sColSLine && sColSLine == sColTLine;
             bool thirdColumnV = tColFLine == tColSLine && tColSLine == tColTLine;
+
+            // boolean for diagonals
+
+            bool diagonal1 = fColFLine == sColSLine && sColSLine == tColTLine;
+            bool diagonal2 = fColTLine == sColSLine && sColSLine == tColFLine;
 
             if (playersChoseOptionToPLay == 1) // only center line
             {
