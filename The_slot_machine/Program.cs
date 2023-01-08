@@ -80,8 +80,8 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
 
             // boolean for diagonals
 
-            bool diagonal1 = fColFLine == sColSLine && sColSLine == tColTLine;
-            bool diagonal2 = fColTLine == sColSLine && sColSLine == tColFLine;
+            bool diagonalDown = fColFLine == sColSLine && sColSLine == tColTLine;
+            bool diagonalUp = fColTLine == sColSLine && sColSLine == tColFLine;
 
             if (playersChoseOptionToPLay == 1) // only center line
             {
@@ -143,7 +143,20 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
 
             if (playersChoseOptionToPLay == 4)
             {
+                if (diagonalDown && diagonalUp)
+                {
+                    Console.WriteLine("You won 2 dollars!!!");
+                    // add money to players balance
+                }
+                else if (diagonalDown | diagonalUp)
+                {
+                    Console.WriteLine("You won 1 dollars !!!");
+                    // add money to players balance
+                }
+                else
 
+                    Console.WriteLine("You lost");
+                // Take out from players balance
             }
 
 
