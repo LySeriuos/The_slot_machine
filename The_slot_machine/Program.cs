@@ -1,4 +1,6 @@
-﻿namespace The_slot_machine // Note: actual namespace depends on the project name.
+﻿using System;
+
+namespace The_slot_machine // Note: actual namespace depends on the project name.
 {
     internal class Program
     {
@@ -46,14 +48,19 @@
 
             }
 
-            // 3. Create multi- random numbers.
+            // 3. Create multi-dimensional random numbers.
             Console.WriteLine("randomNumbers");
 
-            Random randomNumbersGenerator = new Random();
+            Random randomNumbersGenerator = new Random(); // random numbers function
+            int[,] array2Dimmensional = new int[3, 3];  // columns and lines of the grid
 
-            for (int randomNumbersInArray = 0; randomNumbersInArray < 100; randomNumbersInArray++)
+            
+            for (int rows = 0; rows < 3; rows++) //populating 2D Array
             {
-                Console.WriteLine(randomNumbersGenerator.Next(10)); //returns random integers(numbers) < 10
+                for (int columns = 0; columns < 3; columns++)
+                {
+                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 10);
+                }
             }
 
 
@@ -65,20 +72,8 @@
             Console.WriteLine("2D array");
 
 
-            int[,] arr2d = new int[3, 3]{
-                                {1, 2, 3},
-                                {4, 5, 6},
-                                {7, 8, 9}
-                            };
-            Console.WriteLine(arr2d[0, 0]);
-            Console.WriteLine(arr2d[0, 1]);
-            Console.WriteLine(arr2d[0, 2]);
-            Console.WriteLine(arr2d[1, 0]);
-            Console.WriteLine(arr2d[1, 1]);
-            Console.WriteLine(arr2d[1, 2]);
-            Console.WriteLine(arr2d[2, 0]);
-            Console.WriteLine(arr2d[2, 1]);
-            Console.WriteLine(arr2d[2, 2]);
+            
+        
 
 
 
