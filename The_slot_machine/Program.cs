@@ -86,7 +86,24 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                 bool secondLine = fColSLine == sColSLine && sColSLine == tColSLine;
                 bool thirdLine = fColTLine == sColTLine && sColTLine == tColTLine;
 
-                
+                if (firstLine | secondLine | thirdLine)
+                {
+                    Console.WriteLine("You won 1 dollar!!!");
+                    // add money to players balance
+                }
+                else if (firstLine && secondLine | firstLine && thirdLine | secondLine && thirdLine)
+                {
+                    Console.WriteLine("You won 2 dollars !!!");
+                    // add money to players balance
+                }
+                else if (firstLine && secondLine && thirdLine)
+                {
+                    Console.WriteLine("You won 3 dollars!!!");
+                    // add money to players balance
+                }
+                else
+                    Console.WriteLine("You lost");
+                // Take out from players balance
 
             }
 
