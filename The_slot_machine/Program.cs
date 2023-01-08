@@ -82,6 +82,11 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                 int sColTLine = array2Dimmensional[2, 1];
                 int tColTLine = array2Dimmensional[2, 2];
 
+                bool firstLine = fColFLine == sColFLine && sColFLine == tColFLine;
+                bool secondLine = fColSLine == sColSLine && sColSLine == tColSLine;
+                bool thirdLine = fColTLine == sColTLine && sColTLine == tColTLine;
+
+                
 
             }
 
