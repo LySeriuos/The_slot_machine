@@ -72,6 +72,12 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             bool secondLineH = fColSLine == sColSLine && sColSLine == tColSLine;
             bool thirdLineH = fColTLine == sColTLine && sColTLine == tColTLine;
 
+            // boolean for if statements with vertical lines
+
+            bool firstColumnV = fColFLine == fColSLine && fColSLine == fColTLine;
+            bool secondColumnV = sColFLine == sColSLine && sColSLine == sColTLine;
+            bool thirdColumnV = tColFLine == tColSLine && tColSLine == tColTLine;
+
             if (playersChoseOptionToPLay == 1) // only center line
             {
                 if (secondLineH)
@@ -108,6 +114,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
 
             if (playersChoseOptionToPLay == 3)
             {
+                
 
             }
 
