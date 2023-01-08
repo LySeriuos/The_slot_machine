@@ -22,12 +22,43 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
 
 
             // 2. Choose option for bidding (player choose amount to play $). 
-            // 2.1 Create if statements to see if he wants to play combination of (vertical lines, horizontal lines, only center line, two horizontal lines...)
+            
             Console.WriteLine("Add your amount of game money in USD $");
             int playersGameMoney = int.Parse(Console.ReadLine()); // Converting input to int directly, because later it will be used only as int
             Console.WriteLine("Choose how many lines you will play by typing in number of the menu");
             Console.WriteLine("\n\t1 - Center Line. One turn 1$\n\t2 - All horizontal lines. One turn 3$\n\t3 - All vertical lines. One turn 3$\n\t4 - Diagonals. One turn 2$");
             int playersChoseOptionToPLay = int.Parse(Console.ReadLine()); // Converting input to int directly, because later it will be used only as int
+
+
+            // 3. Create 2D array for random numbers.
+
+            Random randomNumbersGenerator = new Random(); // random numbers function
+            int[,] array2Dimmensional = new int[3, 3];  // columns and lines of the grid
+
+            
+            for (int rows = 0; rows < 3; rows++) //populating 2D Array. for every row for loop adding three columns and random numbers to it
+            {
+                for (int columns = 0; columns < 3; columns++) 
+                {
+                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 10); // attributing random numbers to every row and column
+                }
+            }
+
+            // 4. Create and output Random Numbers machine (slot machine).
+
+            for (int rows = 0; rows < array2Dimmensional.GetLength(0); rows++) // getting the length of rows and columns from array2Dimmensional = new int[3, 3];
+                                                                               // GetLength(0) means first number in 2 dimensional array like in here is "3"
+                                                                               // GetLength(1) means second number in 2 dimensional array like in here is "3"
+            {
+                for (int columns = 0; columns < array2Dimmensional.GetLength(1); columns++)
+                {
+                    Console.Write($" {array2Dimmensional[rows, columns]}");
+                }
+                Console.WriteLine();
+            }
+
+            // 5. Create if statements to see if he wants to play combination of (vertical lines, horizontal lines, only center line, two horizontal lines...)
+
             if (playersChoseOptionToPLay == 1)
             {
 
@@ -47,76 +78,6 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             {
 
             }
-
-            // 3. Create multi-dimensional random numbers.
-            Console.WriteLine("randomNumbers");
-
-            Random randomNumbersGenerator = new Random(); // random numbers function
-            int[,] array2Dimmensional = new int[3, 3];  // columns and lines of the grid
-
-            
-            for (int rows = 0; rows < 3; rows++) //populating 2D Array. for every row for loop adding three columns and random numbers to it
-            {
-                for (int columns = 0; columns < 3; columns++) 
-                {
-                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 10); // attributing random numbers to every row and column
-                }
-            }
-
-            
-            for (int rows = 0; rows < array2Dimmensional.GetLength(0); rows++) // getting the length of rows and columns from array2Dimmensional = new int[3, 3];
-                                                                               // GetLength(0) means first number in 2 dimensional array like in here is "3"
-                                                                               // GetLength(1) means second number in 2 dimensional array like in here is "3"
-            {
-                for (int columns = 0; columns < array2Dimmensional.GetLength(1); columns++)
-                {
-                    Console.Write($" {array2Dimmensional[rows, columns]}");
-                }
-                Console.WriteLine();
-            }
-
-
-
-
-
-
-            // 4. Create 2D arrays for random numbers.
-            Console.WriteLine("2D array");
-
-
-            
-        
-
-
-
-
-
-
-            // 5. Create Random Numbers machine (slot machine).
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // 6. Create if statements for every combination.
-
-
-
-
-
-
-
-
-
-
 
 
             // 7. Check if player win or lose.
