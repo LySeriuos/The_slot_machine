@@ -36,7 +36,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             {
                 for (int columns = 0; columns < 3; columns++) 
                 {
-                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 10); // attributing random numbers to every row and column
+                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 2); // attributing random numbers to every row and column
                 }
             }
 
@@ -54,6 +54,15 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             }
 
             // 5. Create if statements to see if he wants to play combination of (vertical lines, horizontal lines, only center line, two horizontal lines...)
+            int fColFLine = array2Dimmensional[0, 0];
+            int sColFLine = array2Dimmensional[0, 1];
+            int tColFLine = array2Dimmensional[0, 2];
+            int fColSLine = array2Dimmensional[1, 0];
+            int sColSLine = array2Dimmensional[1, 1];
+            int tColSLine = array2Dimmensional[1, 2];
+            int fColTLine = array2Dimmensional[2, 0];
+            int sColTLine = array2Dimmensional[2, 1];
+            int tColTLine = array2Dimmensional[2, 2];
 
             if (playersChoseOptionToPLay == 1) // only center line
             {
@@ -72,15 +81,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
 
             if (playersChoseOptionToPLay == 2)
             {
-                int fColFLine = array2Dimmensional[0, 0];
-                int sColFLine = array2Dimmensional[0, 1];
-                int tColFLine = array2Dimmensional[0, 2];
-                int fColSLine = array2Dimmensional[1, 0];
-                int sColSLine = array2Dimmensional[1, 1];
-                int tColSLine = array2Dimmensional[1, 2];
-                int fColTLine = array2Dimmensional[2, 0];
-                int sColTLine = array2Dimmensional[2, 1];
-                int tColTLine = array2Dimmensional[2, 2];
+                
 
                 bool firstLine = fColFLine == sColFLine && sColFLine == tColFLine;
                 bool secondLine = fColSLine == sColSLine && sColSLine == tColSLine;
