@@ -54,6 +54,8 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             }
 
             // 5. Create if statements to see if he wants to play combination of (vertical lines, horizontal lines, only center line, two horizontal lines...)
+            // variables for booleans
+ 
             int fColFLine = array2Dimmensional[0, 0];
             int sColFLine = array2Dimmensional[0, 1];
             int tColFLine = array2Dimmensional[0, 2];
@@ -64,12 +66,15 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             int sColTLine = array2Dimmensional[2, 1];
             int tColTLine = array2Dimmensional[2, 2];
 
+            // boolean for if statements
+
+            bool firstLine = fColFLine == sColFLine && sColFLine == tColFLine;
+            bool secondLine = fColSLine == sColSLine && sColSLine == tColSLine;
+            bool thirdLine = fColTLine == sColTLine && sColTLine == tColTLine;
+
             if (playersChoseOptionToPLay == 1) // only center line
             {
-                int first = array2Dimmensional[1, 0];
-                int second = array2Dimmensional[1, 1];
-                int third = array2Dimmensional[1, 2];
-                if(first == second && second == third)
+                if(secondLine)
                 {
                     Console.WriteLine("You won!!!");
                     // add money to players balance
@@ -83,9 +88,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             {
                 
 
-                bool firstLine = fColFLine == sColFLine && sColFLine == tColFLine;
-                bool secondLine = fColSLine == sColSLine && sColSLine == tColSLine;
-                bool thirdLine = fColTLine == sColTLine && sColTLine == tColTLine;
+                
 
                 if (firstLine | secondLine | thirdLine)
                 {
