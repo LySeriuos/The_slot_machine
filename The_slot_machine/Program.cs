@@ -18,7 +18,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             Console.WriteLine("5. Options to choose for the lines:  \n\t1. Center Line.\n\t2. All horizontal lines.\n\t3. All vertical lines.\n\t4. Diagonals.");
 
             // 2. Choose option for bidding (player choose amount to play $). 
-            
+
             // add if statement to check if input is empty or null
             Console.WriteLine("Add your amount of game money in USD $");
             int playersGameMoney = int.Parse(Console.ReadLine()); // Converting input to int directly, because later it will be used only as int
@@ -31,12 +31,12 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
 
             Random randomNumbersGenerator = new Random(); // random numbers function
             int[,] array2Dimmensional = new int[3, 3];  // columns and lines of the grid
-            
+
             for (int rows = 0; rows < 3; rows++) //populating 2D Array. for every row for loop adding three columns and random numbers to it
             {
-                for (int columns = 0; columns < 3; columns++) 
+                for (int columns = 0; columns < 3; columns++)
                 {
-                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 2); // attributing random numbers to every row and column
+                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 1); // attributing random numbers to every row and column
                 }
             }
 
@@ -55,7 +55,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
 
             // 5. Create if statements to see if he wants to play combination of (vertical lines, horizontal lines, only center line, two horizontal lines...)
             // variables for booleans
- 
+
             int fColFLine = array2Dimmensional[0, 0]; // getting numbers from 2D array 
             int sColFLine = array2Dimmensional[0, 1];
             int tColFLine = array2Dimmensional[0, 2];
@@ -74,14 +74,13 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
 
             if (playersChoseOptionToPLay == 1) // only center line
             {
-                if(secondLineH)
+                if (secondLineH)
                 {
-                    Console.WriteLine("You won!!!");
+                    Console.WriteLine("You won 1 dollar!!!");
                     // add money to players balance
-                }
+                } else
                 Console.WriteLine("You lost");
                 // Take out from players balance
-
             }
 
             if (playersChoseOptionToPLay == 2)
@@ -100,8 +99,9 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                 {
                     Console.WriteLine("You won 1 dollar!!!");
                     // add money to players balance
-                }else
-                              
+                }
+                else
+
                     Console.WriteLine("You lost");
                 // Take out from players balance
             }
