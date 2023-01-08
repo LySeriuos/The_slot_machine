@@ -64,7 +64,16 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             }
 
             
-          
+            for (int rows = 0; rows < array2Dimmensional.GetLength(0); rows++) // getting the length of rows and columns from array2Dimmensional = new int[3, 3];
+                                                                               // GetLength(0) means first number in 2 dimensional array like in here is "3"
+                                                                               // GetLength(1) means second number in 2 dimensional array like in here is "3"
+            {
+                for (int columns = 0; columns < array2Dimmensional.GetLength(1); columns++)
+                {
+                    Console.Write($" {array2Dimmensional[rows, columns]}");
+                }
+                Console.WriteLine();
+            }
 
 
 
