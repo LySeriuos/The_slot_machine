@@ -1,4 +1,6 @@
-﻿namespace The_slot_machine // Note: actual namespace depends on the project name.
+﻿using System.Collections.Generic;
+
+namespace The_slot_machine // Note: actual namespace depends on the project name.
 {
     internal class Program
     {
@@ -70,7 +72,16 @@
 
             if (playersChoseOptionToPLay == 2)
             {
-                
+                int fColFLine = array2Dimmensional[0, 0];
+                int sColFLine = array2Dimmensional[0, 1];
+                int tColFLine = array2Dimmensional[0, 2];
+                int fColSLine = array2Dimmensional[1, 0];
+                int sColSLine = array2Dimmensional[1, 1];
+                int tColSLine = array2Dimmensional[1, 2];
+                int fColTLine = array2Dimmensional[2, 0];
+                int sColTLine = array2Dimmensional[2, 1];
+                int tColTLine = array2Dimmensional[2, 2];
+
 
             }
 
