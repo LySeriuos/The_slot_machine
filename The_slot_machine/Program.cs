@@ -36,7 +36,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             {
                 for (int columns = 0; columns < 3; columns++) 
                 {
-                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 1); // attributing random numbers to every row and column
+                    array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 2); // attributing random numbers to every row and column
                 }
             }
 
@@ -56,7 +56,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             // 5. Create if statements to see if he wants to play combination of (vertical lines, horizontal lines, only center line, two horizontal lines...)
             // variables for booleans
  
-            int fColFLine = array2Dimmensional[0, 0];
+            int fColFLine = array2Dimmensional[0, 0]; // getting numbers from 2D array 
             int sColFLine = array2Dimmensional[0, 1];
             int tColFLine = array2Dimmensional[0, 2];
             int fColSLine = array2Dimmensional[1, 0];
@@ -66,15 +66,15 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             int sColTLine = array2Dimmensional[2, 1];
             int tColTLine = array2Dimmensional[2, 2];
 
-            // boolean for if statements
+            // boolean for if statements with horizontal lines
 
-            bool firstLine = fColFLine == sColFLine && sColFLine == tColFLine;
-            bool secondLine = fColSLine == sColSLine && sColSLine == tColSLine;
-            bool thirdLine = fColTLine == sColTLine && sColTLine == tColTLine;
+            bool firstLineH = fColFLine == sColFLine && sColFLine == tColFLine;
+            bool secondLineH = fColSLine == sColSLine && sColSLine == tColSLine;
+            bool thirdLineH = fColTLine == sColTLine && sColTLine == tColTLine;
 
             if (playersChoseOptionToPLay == 1) // only center line
             {
-                if(secondLine)
+                if(secondLineH)
                 {
                     Console.WriteLine("You won!!!");
                     // add money to players balance
@@ -86,17 +86,17 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
 
             if (playersChoseOptionToPLay == 2)
             {
-                if (firstLine && secondLine && thirdLine)
+                if (firstLineH && secondLineH && thirdLineH)
                 {
                     Console.WriteLine("You won 3 dollars!!!");
                     // add money to players balance
                 }
-                else if (firstLine && secondLine | firstLine && thirdLine | secondLine && thirdLine)
+                else if (firstLineH && secondLineH | firstLineH && thirdLineH | secondLineH && thirdLineH)
                 {
                     Console.WriteLine("You won 2 dollars !!!");
                     // add money to players balance
                 }
-                else if (firstLine | secondLine | thirdLine)
+                else if (firstLineH | secondLineH | thirdLineH)
                 {
                     Console.WriteLine("You won 1 dollar!!!");
                     // add money to players balance
