@@ -131,7 +131,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                                 }
                                 else
                                 {
-                                    playersGameMoney--;
+                                    playersGameMoney-=3;
                                     Console.WriteLine("You lost!");
                                 }
                             }
