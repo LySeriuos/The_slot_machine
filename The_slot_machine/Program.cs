@@ -58,7 +58,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                     Random randomNumbersGenerator = new Random(); // random numbers function
                     int[,] array2Dimmensional = new int[3, 3];  // columns and lines of the grid
 
-                    for (int rows = 0; rows < 3; rows++) //populating 2D Array. for every row for loop adding three columns and random numbers to it
+                    for (int rows = 0; rows < 3; rows++) //populating 2D Array. for every row for loop is adding three columns and random numbers to it
                     {
                         for (int columns = 0; columns < 3; columns++)
                         {
@@ -75,13 +75,13 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                     {
                         for (int columns = 0; columns < array2Dimmensional.GetLength(1); columns++)
                         {
-                            Console.Write($" {array2Dimmensional[rows, columns]}");
+                            Console.Write($" {array2Dimmensional[rows, columns]}"); // printing out the grid 
                         }
-                        Console.WriteLine();
+                        Console.WriteLine(); // empty place
                     }
 
                     // 5. Create if statements to see if he wants to play combination of (vertical lines, horizontal lines, only center line, two horizontal lines...)
-                    // variables for booleans
+                    // variables for booleans and positions of each object in the grid
 
                     int fColFLine = array2Dimmensional[0, 0]; // getting numbers from 2D array 
                     int sColFLine = array2Dimmensional[0, 1];
@@ -111,26 +111,26 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                     bool diagonalUp = fColTLine == sColSLine && sColSLine == tColFLine;
 
                     // IF statements for every option
-                    if (playersChoseOptionToPLay <= 4)
+                    if (playersChoseOptionToPLay <= 4) // user input must be less or equal to 4 because there is only 4 options to choose
                     {
-                        Console.WriteLine();
+                        Console.WriteLine(); // empty line
 
-                        if (playersChoseOptionToPLay == 1 && playersGameMoney >= 1) // only center line
+                        if (playersChoseOptionToPLay == 1 && playersGameMoney >= 1) // player chose 1st option and player must have 1 dollar to play this line
                         {
-                            if (secondLineH)
+                            if (secondLineH) // to get this true, all numbers in the middle line in the grid must match
                             {
                                 Console.WriteLine("You won 2 dollars!!!");
-                                playersGameMoney += 2;
+                                playersGameMoney += 2; // adding 2 dollars to current balance for user
                             }
                             else
                             {
-                                playersGameMoney--;
+                                playersGameMoney--; // taking 1 dollar from current balance because player lost
                                 Console.WriteLine("You lost!");
                             }
                         }
-                        else if (playersChoseOptionToPLay == 2 && playersGameMoney >= 3)
+                        else if (playersChoseOptionToPLay == 2 && playersGameMoney >= 3) // player chose 2st option and player must have 3 dollars to play this line
                         {
-                            if (firstLineH && secondLineH && thirdLineH)
+                            if (firstLineH && secondLineH && thirdLineH) // Most unlikely wining condition on the top to avoid other conditions will break the code
                             {
                                 Console.WriteLine("You won 6 dollars!!!");
                                 playersGameMoney += 6;
@@ -154,6 +154,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                         }
                         else if (playersChoseOptionToPLay == 3 && playersGameMoney >= 3)
                         {
+                            // here player plays with columns instead of lines
                             if (firstColumnV && secondColumnV && thirdColumnV)
                             {
                                 Console.WriteLine("You won 6 dollars!!!");
