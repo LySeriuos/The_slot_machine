@@ -28,7 +28,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                 Console.WriteLine("Add your amount of game money in USD $");
                 playersGameMoney = int.Parse(Console.ReadLine()); // Converting input to int directly, because later it will be used only as int
 
-                while (playersGameMoney > 0)
+                while (playersGameMoney > 0 && playersGameMoney < 100)
                 {
                     Console.WriteLine("Choose how many lines you will play by typing in number of the menu");
                     Console.WriteLine("\n\t1 - Center Line. One turn 1$\n\t2 - All horizontal lines. One turn 3$\n\t3 - All vertical lines. One turn 3$\n\t4 - Diagonals. One turn 2$");
@@ -92,92 +92,101 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                     bool diagonalUp = fColTLine == sColSLine && sColSLine == tColFLine;
 
                     // IF statements for every option
+                    if (playersChoseOptionToPLay <= 4)
+                    {
+                        Console.WriteLine();
 
-                    if (playersChoseOptionToPLay == 1 && playersGameMoney >= 1) // only center line
-                    {
-                        if (secondLineH)
+                        if (playersChoseOptionToPLay == 1 && playersGameMoney >= 1) // only center line
                         {
-                            Console.WriteLine("You won 2 dollars!!!");
-                            playersGameMoney += 2;
+                            if (secondLineH)
+                            {
+                                Console.WriteLine("You won 2 dollars!!!");
+                                playersGameMoney += 2;
+                            }
+                            else
+                            {
+                                playersGameMoney--;
+                                Console.WriteLine("You lost!");
+                            }
                         }
-                        else
+                        else if (playersChoseOptionToPLay == 2 && playersGameMoney >= 3)
                         {
-                            playersGameMoney--;
-                            Console.WriteLine("You lost!");
-                        }
-                    }
-                    else if (playersChoseOptionToPLay == 2 && playersGameMoney >= 3)
-                    {
-                        if (firstLineH && secondLineH && thirdLineH)
-                        {
-                            Console.WriteLine("You won 6 dollars!!!");
-                            playersGameMoney += 6;
+                            if (firstLineH && secondLineH && thirdLineH)
+                            {
+                                Console.WriteLine("You won 6 dollars!!!");
+                                playersGameMoney += 6;
 
+                            }
+                            else if (firstLineH && secondLineH || firstLineH && thirdLineH || secondLineH && thirdLineH)
+                            {
+                                Console.WriteLine("You won 4 dollars !!!");
+                                playersGameMoney += 4;
+                            }
+                            else if (firstLineH | secondLineH | thirdLineH)
+                            {
+                                Console.WriteLine("You won 2 dollars!!!");
+                                playersGameMoney += 2;
+                            }
+                            else
+                            {
+                                playersGameMoney -= 3;
+                                Console.WriteLine("You lost!");
+                            }
                         }
-                        else if (firstLineH && secondLineH || firstLineH && thirdLineH || secondLineH && thirdLineH)
+                        else if (playersChoseOptionToPLay == 3 && playersGameMoney >= 3)
                         {
-                            Console.WriteLine("You won 4 dollars !!!");
-                            playersGameMoney += 4;
+                            if (firstColumnV && secondColumnV && thirdColumnV)
+                            {
+                                Console.WriteLine("You won 6 dollars!!!");
+                                playersGameMoney += 6;
+                            }
+                            else if (firstColumnV && secondColumnV || firstColumnV && thirdColumnV || secondColumnV && thirdColumnV)
+                            {
+                                Console.WriteLine("You won 4 dollars !!!");
+                                playersGameMoney += 4;
+                            }
+                            else if (firstColumnV | secondColumnV | thirdColumnV)
+                            {
+                                Console.WriteLine("You won 2 dollars!!!");
+                                playersGameMoney += 2;
+                            }
+                            else
+                            {
+                                playersGameMoney -= 3;
+                                Console.WriteLine("You lost!");
+                            }
                         }
-                        else if (firstLineH | secondLineH | thirdLineH)
+                        else if (playersChoseOptionToPLay == 4 && playersGameMoney >= 4)
                         {
-                            Console.WriteLine("You won 2 dollars!!!");
-                            playersGameMoney += 2;
+                            if (diagonalDown && diagonalUp)
+                            {
+                                Console.WriteLine("You won 4 dollars!!!");
+                                playersGameMoney += 4;
+                            }
+                            else if (diagonalDown || diagonalUp)
+                            {
+                                Console.WriteLine("You won 2 dollars!!!");
+                                playersGameMoney += 2;
+                            }
+                            else
+                            {
+                                playersGameMoney -= 2;
+                                Console.WriteLine("You lost!");
+                            }
                         }
                         else
                         {
-                            playersGameMoney -= 3;
-                            Console.WriteLine("You lost!");
+                            Console.WriteLine("Your current balance is too low! Choose another option!");
                         }
-                    }
-                    else if (playersChoseOptionToPLay == 3 && playersGameMoney >= 3)
-                    {
-                        if (firstColumnV && secondColumnV && thirdColumnV)
-                        {
-                            Console.WriteLine("You won 6 dollars!!!");
-                            playersGameMoney += 6;
-                        }
-                        else if (firstColumnV && secondColumnV || firstColumnV && thirdColumnV || secondColumnV && thirdColumnV)
-                        {
-                            Console.WriteLine("You won 4 dollars !!!");
-                            playersGameMoney += 4;
-                        }
-                        else if (firstColumnV | secondColumnV | thirdColumnV)
-                        {
-                            Console.WriteLine("You won 2 dollars!!!");
-                            playersGameMoney += 2;
-                        }
-                        else
-                        {
-                            playersGameMoney -= 3;
-                            Console.WriteLine("You lost!");
-                        }
-                    }
-                    else if (playersChoseOptionToPLay == 4 && playersGameMoney >= 4)
-                    {
-                        if (diagonalDown && diagonalUp)
-                        {
-                            Console.WriteLine("You won 4 dollars!!!");
-                            playersGameMoney += 4;
-                        }
-                        else if (diagonalDown || diagonalUp)
-                        {
-                            Console.WriteLine("You won 2 dollars!!!");
-                            playersGameMoney += 2;
-                        }
-                        else
-                        {
-                            playersGameMoney -= 2;
-                            Console.WriteLine("You lost!");
-                        }
+
+                        // all the repeated code
+                        Console.WriteLine();
+                        Console.WriteLine($"Your acount balance now is: {playersGameMoney} dollars");
                     }
                     else
                     {
-                        Console.WriteLine("Your current balance is too low! Choose another option!");
+                        Console.WriteLine("Wrong number! Check option you chose");
                     }
-
-                    // all the repeated code
-                    Console.WriteLine($"Your acount balance now is: {playersGameMoney} dollars");
                 }
 
             }
