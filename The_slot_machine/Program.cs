@@ -8,7 +8,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
         static void Main(string[] args)
         {
             // Plan for the slot machine code:
-            // 1. Instructions.
+            // 1. Instructions for game play.
 
             Console.WriteLine("Welcome to the slot mashine");
             Console.WriteLine("The rools to the game:");
@@ -18,24 +18,42 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             Console.WriteLine("4. More lines yyou choosee more chance to win!");
             Console.WriteLine("5. Options to choose for the lines:  \n\t1. Center Line.\n\t2. All horizontal lines.\n\t3. All vertical lines.\n\t4. Diagonals.");
 
-            // 2. Choose option for bidding (player choose amount to play $). 
+            // 2. Choose option for bidding (player adds amount to play $). 
 
-            // add if statement to check if input is empty or null
+            // User's inputs variables
             int playersGameMoney;
+            int playersChoseOptionToPLay;
 
+            // looping until user's input is 0. 
             while (true)
             {
-                Console.WriteLine("Add your amount of game money in USD $");
-                playersGameMoney = int.Parse(Console.ReadLine()); // Converting input to int directly, because later it will be used only as int
+                try  // ask to tel more about this, copied code!
+                {
+                    Console.WriteLine("Add your amount of game money in USD $");
+                    playersGameMoney = int.Parse(Console.ReadLine()); // Converting input to int directly, because later it will be used only as int
+                }
+                catch (Exception) // ask to tel more about this, copied code!
+                {
+                    Console.WriteLine("That wasn't a number.");
+                    continue;
+                }
 
                 while (playersGameMoney > 0 && playersGameMoney < 100)
                 {
-                    Console.WriteLine("Choose how many lines you will play by typing in number of the menu");
-                    Console.WriteLine("\n\t1 - Center Line. One turn 1$\n\t2 - All horizontal lines. One turn 3$\n\t3 - All vertical lines. One turn 3$\n\t4 - Diagonals. One turn 2$");
+                    try  // ask to tel more about this, copied code!
+                    {
+                        Console.WriteLine("Choose how many lines you will play by typing in number of the menu");
+                        Console.WriteLine("\n\t1 - Center Line. One turn 1$\n\t2 - All horizontal lines. One turn 3$\n\t3 - All vertical lines. One turn 3$\n\t4 - Diagonals. One turn 2$");
 
-                    int playersChoseOptionToPLay = int.Parse(Console.ReadLine()); // Converting input to int directly, because later it will be used only as int
+                        playersChoseOptionToPLay = int.Parse(Console.ReadLine()); // Converting input to int directly, because later it will be used only as int
                                                                                   // add while loop until the player has money
                                                                                   // 3. Create 2D array for random numbers.
+                    }
+                    catch (Exception) // ask to tel more about this, copied code!
+                    {
+                        Console.WriteLine("That wasn't a number.");
+                        continue;
+                    }
 
                     Random randomNumbersGenerator = new Random(); // random numbers function
                     int[,] array2Dimmensional = new int[3, 3];  // columns and lines of the grid
@@ -49,6 +67,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                     }
 
                     // 4. Create and output Random Numbers machine (slot machine).
+                    Console.WriteLine();
 
                     for (int rows = 0; rows < array2Dimmensional.GetLength(0); rows++) // getting the length of rows and columns from array2Dimmensional = new int[3, 3];
                                                                                        // GetLength(0) means first number in 2 dimensional array like in here is "3"
@@ -188,9 +207,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                         Console.WriteLine("Wrong number! Check option you chose");
                     }
                 }
-
-            }
-
+            }             
         }
     }
 }
