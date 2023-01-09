@@ -38,7 +38,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                     continue;
                 }
 
-                while (playersGameMoney > 0 && playersGameMoney < 100)
+                while (playersGameMoney > 0 && playersGameMoney < 101)
                 {
                     try  // ask to tel more about this, copied code!
                     {
@@ -62,7 +62,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                     {
                         for (int columns = 0; columns < 3; columns++)
                         {
-                            array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 3); // attributing random numbers to every row and column
+                            array2Dimmensional[rows, columns] = randomNumbersGenerator.Next(0, 10); // attributing random numbers to every row and column. 10 is not including
                         }
                     }
 
