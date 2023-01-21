@@ -111,106 +111,97 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                     bool diagonalUp = fColTLine == sColSLine && sColSLine == tColFLine;
 
                     // IF statements for every option
-                    if (playersChoseOptionToPLay <= 4) // user input must be less or equal to 4 because there is only 4 options to choose
+                    if (playersChoseOptionToPLay > 4) // user input must be less or equal to 4 because there is only 4 options to choose
+                        continue;
+
+                    Console.WriteLine(); // empty line
+ 
+                    int winAmount = 0;
+                    if (playersChoseOptionToPLay == 1 && playersGameMoney > 0) // player chose 1st option and player must have 1 dollar to play this line
                     {
-                        Console.WriteLine(); // empty line
-
-                        if (playersChoseOptionToPLay == 1 && playersGameMoney >= 1) // player chose 1st option and player must have 1 dollar to play this line
-                        {
-                            if (secondLineH) // to get this true, all numbers in the middle line in the grid must match
-                            {
-                                Console.WriteLine("You won 2 dollars!!!");
-                                playersGameMoney += 2; // adding 2 dollars to current balance for user
-                            }
-                            else
-                            {
-                                playersGameMoney--; // taking 1 dollar from current balance because player lost
-                                Console.WriteLine("You lost!");
-                            }
-                        }
-                        else if (playersChoseOptionToPLay == 2 && playersGameMoney >= 3) // player chose 2st option and player must have 3 dollars to play this line
-                        {
-                            if (firstLineH && secondLineH && thirdLineH) // Most unlikely wining condition on the top to avoid other conditions will break the code
-                            {
-                                Console.WriteLine("You won 6 dollars!!!");
-                                playersGameMoney += 6;
-
-                            }
-                            else if (firstLineH && secondLineH || firstLineH && thirdLineH || secondLineH && thirdLineH)
-                            {
-                                Console.WriteLine("You won 4 dollars !!!");
-                                playersGameMoney += 4;
-                            }
-                            else if (firstLineH | secondLineH | thirdLineH)
-                            {
-                                Console.WriteLine("You won 2 dollars!!!");
-                                playersGameMoney += 2;
-                            }
-                            else
-                            {
-                                playersGameMoney -= 3;
-                                Console.WriteLine("You lost!");
-                            }
-                        }
-                        else if (playersChoseOptionToPLay == 3 && playersGameMoney >= 3)
-                        {
-                            // here player plays with columns instead of lines
-                            if (firstColumnV && secondColumnV && thirdColumnV)
-                            {
-                                Console.WriteLine("You won 6 dollars!!!");
-                                playersGameMoney += 6;
-                            }
-                            else if (firstColumnV && secondColumnV || firstColumnV && thirdColumnV || secondColumnV && thirdColumnV)
-                            {
-                                Console.WriteLine("You won 4 dollars !!!");
-                                playersGameMoney += 4;
-                            }
-                            else if (firstColumnV | secondColumnV | thirdColumnV)
-                            {
-                                Console.WriteLine("You won 2 dollars!!!");
-                                playersGameMoney += 2;
-                            }
-                            else
-                            {
-                                playersGameMoney -= 3;
-                                Console.WriteLine("You lost!");
-                            }
-                        }
-                        else if (playersChoseOptionToPLay == 4 && playersGameMoney >= 4)
-                        {
-                            if (diagonalDown && diagonalUp)
-                            {
-                                Console.WriteLine("You won 4 dollars!!!");
-                                playersGameMoney += 4;
-                            }
-                            else if (diagonalDown || diagonalUp)
-                            {
-                                Console.WriteLine("You won 2 dollars!!!");
-                                playersGameMoney += 2;
-                            }
-                            else
-                            {
-                                playersGameMoney -= 2;
-                                Console.WriteLine("You lost!");
-                            }
+                        if (secondLineH) // to get this true, all numbers in the middle line in the grid must match
+                        {                         
+                            winAmount = 2; // adding 2 dollars to current balance for user
                         }
                         else
                         {
-                            Console.WriteLine("Your current balance is too low! Choose another option!");
+                            winAmount--; // taking 1 dollar from current balance because player lost 
                         }
+                    }
+                    else if (playersChoseOptionToPLay == 2 && playersGameMoney > 2) // player chose 2st option and player must have 3 dollars to play this line
+                    {
+                        if (firstLineH && secondLineH && thirdLineH) // Most unlikely wining condition on the top to avoid other conditions will break the code
+                        {
+                            winAmount = 6;
 
-                        // all the repeated code
-                        Console.WriteLine();
-                        Console.WriteLine($"Your acount balance now is: {playersGameMoney} dollars");
+                        }
+                        else if (firstLineH && secondLineH || firstLineH && thirdLineH || secondLineH && thirdLineH)
+                        {
+                            winAmount = 4;
+                        }
+                        else if (firstLineH | secondLineH | thirdLineH)
+                        {
+                            winAmount = 2;
+                        }
+                        else
+                        {
+                            winAmount -= 3;
+                        }
+                    }
+                    else if (playersChoseOptionToPLay == 3 && playersGameMoney > 2)
+                    {
+                        // here player plays with columns instead of lines
+                        if (firstColumnV && secondColumnV && thirdColumnV)
+                        {
+                            winAmount = 6;
+                        }
+                        else if (firstColumnV && secondColumnV || firstColumnV && thirdColumnV || secondColumnV && thirdColumnV)
+                        {
+                            winAmount = 4;
+                        }
+                        else if (firstColumnV | secondColumnV | thirdColumnV)
+                        {
+                            winAmount = 4;
+                        }
+                        else
+                        {
+                            playersGameMoney -= 3;
+                        }
+                    }
+                    else if (playersChoseOptionToPLay == 4 && playersGameMoney > 1)
+                    {
+                        if (diagonalDown && diagonalUp)
+                        {
+                            winAmount = 4;
+                        }
+                        else if (diagonalDown || diagonalUp)
+                        {
+                            winAmount = 2;
+                        }
+                        else
+                        {
+                            playersGameMoney -= 2;
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Wrong number! Check option you chose");
+                        Console.WriteLine("Your current balance is too low! Choose another option!");
                     }
+
+                    if(winAmount < 0) 
+                    {
+                        Console.WriteLine("You lost!");
+                    }
+                    // all the repeated code
+                    Console.WriteLine($"You won {winAmount} dollars");
+                    Console.WriteLine();
+                    Console.WriteLine($"Your acount balance now is: {winAmount} dollars");
                 }
-            }             
+
+            }
         }
     }
+}
 }
 
 
