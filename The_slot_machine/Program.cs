@@ -27,12 +27,12 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
             // looping until user's input is 0. 
             while (true)
             {
-                try  // ask to tel more about this, copied code!
+                try  // ask to tell more about this, copied code!
                 {
                     Console.WriteLine("Add your amount of game money in USD $");
                     playersGameMoney = int.Parse(Console.ReadLine()); // Converting input to int directly, because later it will be used only as int
                 }
-                catch (Exception) // ask to tel more about this, copied code!
+                catch (Exception) // ask to tell more about this, copied code!
                 {
                     Console.WriteLine("That wasn't a number.");
                     continue;
@@ -55,6 +55,27 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                         continue;
                     }
 
+                    if (playersChoseOptionToPLay == 1 && playersGameMoney < 1 || 
+                        playersChoseOptionToPLay == 2 && playersGameMoney < 3 || 
+                        playersChoseOptionToPLay == 3 && playersGameMoney < 3 || 
+                        playersChoseOptionToPLay == 4 && playersGameMoney < 2)
+                    {
+                        break;
+                    }
+
+                    else
+                    {
+                        if (playersChoseOptionToPLay > 4)
+                        {
+                            Console.WriteLine($"There is no Option with number {playersChoseOptionToPLay}");
+                            continue;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Your current balance is too low! Choose another option!");
+                        }
+                    }
+
                     Random randomNumbersGenerator = new Random(); // random numbers function
                     int[,] array2Dimmensional = new int[3, 3];  // columns and lines of the grid
 
@@ -67,6 +88,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                     }
 
                     // 4. Create and output Random Numbers machine (slot machine).
+
                     Console.WriteLine();
 
                     for (int rows = 0; rows < array2Dimmensional.GetLength(0); rows++) // getting the length of rows and columns from array2Dimmensional = new int[3, 3];
@@ -79,6 +101,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                         }
                         Console.WriteLine(); // empty place
                     }
+
 
                     // 5. Create if statements to see if he wants to play combination of (vertical lines, horizontal lines, only center line, two horizontal lines...)
                     // variables for booleans and positions of each object in the grid
@@ -111,16 +134,15 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                     bool diagonalUp = fColTLine == sColSLine && sColSLine == tColFLine;
 
                     // IF statements for every option
-                    if (playersChoseOptionToPLay > 4) // user input must be less or equal to 4 because there is only 4 options to choose
-                        continue;
 
                     Console.WriteLine(); // empty line
- 
+
                     int winAmount = 0;
+
                     if (playersChoseOptionToPLay == 1 && playersGameMoney > 0) // player chose 1st option and player must have 1 dollar to play this line
                     {
                         if (secondLineH) // to get this true, all numbers in the middle line in the grid must match
-                        {                         
+                        {
                             winAmount = 2; // adding 2 dollars to current balance for user
                         }
                         else
@@ -165,7 +187,7 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                         }
                         else
                         {
-                            playersGameMoney -= 3;
+                            winAmount -= 3;
                         }
                     }
                     else if (playersChoseOptionToPLay == 4 && playersGameMoney > 1)
@@ -180,28 +202,30 @@ namespace The_slot_machine // Note: actual namespace depends on the project name
                         }
                         else
                         {
-                            playersGameMoney -= 2;
+                            winAmount -= 2;
                         }
+                    }
+                    
+                    if (winAmount < 1)
+                    {
+                        Console.WriteLine("You lost! Try again!");
                     }
                     else
                     {
-                        Console.WriteLine("Your current balance is too low! Choose another option!");
+                        Console.WriteLine($"You won {winAmount} dollars");
                     }
 
-                    if(winAmount < 0) 
-                    {
-                        Console.WriteLine("You lost!");
-                    }
                     // all the repeated code
-                    Console.WriteLine($"You won {winAmount} dollars");
+
+                    playersGameMoney = playersGameMoney + winAmount;
                     Console.WriteLine();
-                    Console.WriteLine($"Your acount balance now is: {winAmount} dollars");
+                    Console.WriteLine($"Your acount balance now is: {playersGameMoney} dollars");
                 }
 
             }
         }
     }
 }
-}
+
 
 
